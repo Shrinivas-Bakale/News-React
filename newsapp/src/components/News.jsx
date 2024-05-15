@@ -7,16 +7,19 @@ function News(props) {
   const [articles, setArticles] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
 
   const getApi = async (pageNumber) => {
-    setLoading(true)
-    let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=f0f20faac89a4cb39ddbebe92a2f2336&page=${pageNumber}&pageSize=${props.pageSize}`;
+    setLoading(true);
+
+    // console.log(props.category);
     try {
-        const response = await axios.get(url);
-        setArticles(response.data.articles);
-        setTotalPages(Math.ceil(response.data.totalResults / props.pageSize));
-        setLoading(false)
+      const response = await axios.get(
+        `https://newsapi.org/v2/top-headlines?country=in&category=${props.category}&apiKey=f0f20faac89a4cb39ddbebe92a2f2336&page=${pageNumber}&pageSize=${props.pageSize}`
+      );
+      setArticles(response.data.articles);
+      setTotalPages(Math.ceil(response.data.totalResults / props.pageSize));
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -24,7 +27,7 @@ function News(props) {
 
   useEffect(() => {
     getApi(currentPage);
-  }, [currentPage]);
+  }, [currentPage, props.category]);
 
   const handleNextBtn = () => {
     if (currentPage < totalPages) {
@@ -40,9 +43,9 @@ function News(props) {
 
   return (
     <div className="container my-3">
-      <h2>News articles</h2>
+      <h2 className="text-center my-4">{props.category} News articles</h2>
       {loading && <Spinner />}
-      <div className="row">
+      <div className="row ">
         {!loading &&
           articles.map((element) => {
             return (

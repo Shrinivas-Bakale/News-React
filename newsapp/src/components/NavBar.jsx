@@ -1,73 +1,68 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
-export class NavBar extends Component {
-  static propTypes = {};
+function NavBar({ handleSendLink }) {
+  const categories = [
+    { name: "Business", link: "/business" },
+    { name: "Entertainment", link: "/entertainment" },
+    { name: "Health", link: "/health" },
+    { name: "Science", link: "/science" },
+    { name: "Sports", link: "/sports" },
+  ];
 
-  render() {
-    return (
-      <div>
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-          <div className="container-fluid">
-            <a className="navbar-brand" href="#">
-              NewsMonkey
-            </a>
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span className="navbar-toggler-icon"></span>
-            </button>
-            <div
-              className="collapse navbar-collapse"
-              id="navbarSupportedContent"
-            >
-              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="#">
-                    Home
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <div className="dropdown">
+  return (
+    <div>
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div className="container-fluid">
+          <a className="navbar-brand" href="#">
+            NewsMonkey
+          </a>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div
+            className="collapse navbar-collapse"
+            id="navbarSupportedContent"
+          >
+            <ul className="navbar-nav me-auto align-items-center  mb-2 mb-lg-0">
+              <li className="nav-item">
+                <a className="nav-link active" aria-current="page" href="#">
+                  Home
+                </a>
+              </li>
+              <li className="nav-item drop-down">
+                <a href="" className="cat-drop">
+                  Categories
+                </a>
+                <div className="drop-items">
+                  {categories.map((category) => (
                     <button
-                      className="btn btn-secondary dropdown-toggle"
-                      type="button"
-                      id="dropdownMenuButton"
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
+                      key={category.name}
+                      onClick={() => handleSendLink(category.name)}
                     >
-                      Dropdown button
+                      {category.name}
                     </button>
-                    <div
-                      className="dropdown-menu"
-                      aria-labelledby="dropdownMenuButton"
-                    >
-                      <a className="dropdown-item" href="#">
-                        Action
-                      </a>
-                      <a className="dropdown-item" href="#">
-                        Another action
-                      </a>
-                      <a className="dropdown-item" href="#">
-                        Something else here
-                      </a>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
+                  ))}
+                </div>
+              </li>
+            </ul>
           </div>
-        </nav>
-      </div>
-    );
-  }
+        </div>
+      </nav>
+    </div>
+  );
 }
+
+NavBar.propTypes = {
+  handleSendLink: PropTypes.func.isRequired,
+};
 
 export default NavBar;

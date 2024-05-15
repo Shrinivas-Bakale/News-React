@@ -1,0 +1,23 @@
+.cat-drop{
+  text-decoration: none;
+  color: white;
+}
+
+.drop-items a{
+  display: block;
+  color: black;
+  padding: 10px 10px;
+  text-decoration: none;
+}
+
+.drop-down .drop-items{
+  display: none;
+  position: absolute;
+  min-width: 100px;
+  background-color: white;
+  z-index: 90;
+}
+
+.drop-down:hover .drop-items{
+  display: block;
+} 
