@@ -1,22 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
-function NavBar({ handleSendLink }) {
-  const categories = [
-    { name: "Business", link: "/business" },
-    { name: "Entertainment", link: "/entertainment" },
-    { name: "Health", link: "/health" },
-    { name: "Science", link: "/science" },
-    { name: "Sports", link: "/sports" },
-  ];
-
+function NavBar() {
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
+          <Link className="navbar-brand" to="/">
             NewsMonkey
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -28,30 +21,29 @@ function NavBar({ handleSendLink }) {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div
-            className="collapse navbar-collapse"
-            id="navbarSupportedContent"
-          >
-            <ul className="navbar-nav me-auto align-items-center  mb-2 mb-lg-0">
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">
-                  Home
-                </a>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav me-auto align-items-center  mb-2 mb-lg-0 ">
+              <li className="nav-item ">
+                <Link to="/" className="cat-links2">Home</Link>
               </li>
               <li className="nav-item drop-down">
-                <a href="" className="cat-drop">
-                  Categories
-                </a>
-                <div className="drop-items">
-                  {categories.map((category) => (
-                    <button
-                      key={category.name}
-                      onClick={() => handleSendLink(category.name)}
-                    >
-                      {category.name}
-                    </button>
-                  ))}
-                </div>
+                <ul className="cat-links">
+                  <li>
+                    <Link to="/Science">Science</Link>
+                  </li>
+                  <li>
+                    <Link to="/Sports">Sports</Link>
+                  </li>
+                  <li>
+                    <Link to="/Health">Health</Link>
+                  </li>
+                  <li>
+                    <Link to="/Entertainment">Entertainment</Link>
+                  </li>
+                  <li>
+                    <Link to="/Business">Business</Link>
+                  </li>
+                </ul>
               </li>
             </ul>
           </div>
@@ -60,9 +52,5 @@ function NavBar({ handleSendLink }) {
     </div>
   );
 }
-
-NavBar.propTypes = {
-  handleSendLink: PropTypes.func.isRequired,
-};
 
 export default NavBar;

@@ -60,8 +60,11 @@ function News(props) {
                       ? element.urlToImage
                       : "https://www.hindustantimes.com/ht-img/img/2024/05/12/1600x900/phase_4_1715514229523_1715514243628.jpg"
                   }
+                  
                   newsUrl={element.url}
                   date={element.publishedAt}
+                  author={element.author?element.author:"Unknown"}
+                  source={element.source.name}
                 />
               </div>
             );

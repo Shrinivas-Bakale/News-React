@@ -1,4 +1,4 @@
-.cat-drop{
+/* .cat-drop{
   text-decoration: none;
   color: white;
 }
@@ -20,4 +20,22 @@
 
 .drop-down:hover .drop-items{
   display: block;
-} 
+}  */
+
+.cat-links {
+  display: flex;
+  list-style-type: none;
+  transform: translateX(-22px);
+}
+
+.cat-links li a {
+  text-decoration: none;
+  color: white;
+  margin-right: 10px;
+}
+
+.cat-links2{
+  text-decoration: none;
+  color: white;
+  
+}
