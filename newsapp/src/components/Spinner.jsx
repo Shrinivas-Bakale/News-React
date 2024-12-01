@@ -7,6 +7,6 @@ export default class Spinner extends Component {
       <div className='d-flex justify-content-center'>
         <img src={loading} alt="" className="text-center" />
       </div>
-    )
+    ) 
   }
 }

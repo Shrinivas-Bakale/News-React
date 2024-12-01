@@ -4,7 +4,7 @@ export class NewsItem extends Component {
   render() {
     let { title, description, image, newsUrl, date, author, source } =
       this.props;
-    return (
+    return ( 
       <div>
         <div className="card ">
           <img src={image} className="card-img-top" alt="..." />
@@ -15,7 +15,7 @@ export class NewsItem extends Component {
               Read More
             </a>
             <footer className="my-2" style={{ color: "#6c757d" }}>
-              <span class="badge badge-secondary p-2" style={{backgroundColor:"gray"}}>{source}</span> <br />
+              <span className="badge badge-secondary p-2" style={{backgroundColor:"gray"}}>{source}</span> <br />
               By <cite title="Source Title">{author}</cite> on{" "}
               <cite>{new Date(date).toUTCString()}</cite>
             </footer>
